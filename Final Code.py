@@ -4,6 +4,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+from scipy.stats import skew
+from scipy.stats import kurtosis
 
 
 def getdata(Population):
@@ -26,6 +28,16 @@ df_cleaned = df_pivot.fillna(df_pivot.mean())
 
 df_cleaned_2 = df_cleaned.drop(['Year', 'Country Name'], axis='columns')
 print(df_cleaned_2.describe())
+
+#Skewness
+India_data = df_cleaned[df_cleaned['Country Name'] == "India"]
+India_skewness = skew(India_data['Population, total'])
+print("Skewness of India Population", India_skewness )
+
+
+India_kurtosis = kurtosis(India_data['Population, total'])
+print("Kurtosis of India Population", India_kurtosis )
+
 getdata("Life Expectancy.csv")
 
 
