@@ -49,7 +49,7 @@ def population_Bargraph_1(Life_Expectancy):
         ['Mexico', 'Pakistan', 'Indonesia', 'United States', 'India'])
 
     # Plotting the grouped bar chart
-    df_pivoted.plot(kind='bar', figsize=(10, 8))
+    df_pivoted.plot(kind='bar', figsize=(10, 6))
     plt.xlabel('Countries')
     plt.ylabel('Population, Total')
     plt.title('Population, Total')
@@ -84,7 +84,7 @@ def population_Bargraph_2(Life_Expectancy):
         ['Mexico', 'Pakistan', 'Indonesia', 'United States', 'India'])
 
     # Plotting the grouped bar chart
-    df_pivoted.plot(kind='bar', figsize=(10, 8))
+    df_pivoted.plot(kind='bar', figsize=(10, 6))
     plt.xlabel('Countries')
     plt.ylabel('Death rate, crude (per 1,000 people)')
     plt.title('Death rate, crude (per 1,000 people)')
@@ -191,7 +191,7 @@ def India_HeatMap(Population):
     India_subset = India_data[indicators]
 
 # Plotting the heatmap
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=(12, 8))
     heatmap = sns.heatmap(India_subset.corr(), annot=True,
                           cmap='magma', fmt='.2f', annot_kws={"size": 10})
     plt.title('Correlation Heatmap of Indicators for India')
@@ -224,7 +224,7 @@ def United_States_HeatMap(Population):
     United_States_subset = United_States_data[indicators]
 
 # Plotting the heatmap
-    plt.figure(figsize=(12, 10))
+    plt.figure(figsize=(12, 8))
     heatmap = sns.heatmap(United_States_subset.corr(
     ), annot=True, cmap='magma', fmt='.2f', annot_kws={"size": 10})
     plt.title('Correlation Heatmap of Indicators for United States')
