@@ -9,6 +9,15 @@ from scipy.stats import kurtosis
 
 
 def getdata(Population):
+    """
+    Read data from a CSV file and return it as a pandas DataFrame.
+
+    Args:
+    - Population: str, path to the CSV file containing population data
+
+    Returns:
+    - df_life: pandas DataFrame containing the data read from the CSV
+    """
     df_life = pd.read_csv(Population)
     return df_life
 
@@ -29,19 +38,25 @@ df_cleaned = df_pivot.fillna(df_pivot.mean())
 df_cleaned_2 = df_cleaned.drop(['Year', 'Country Name'], axis='columns')
 print(df_cleaned_2.describe())
 
-#Skewness
+# Skewness
 India_data = df_cleaned[df_cleaned['Country Name'] == "India"]
 India_skewness = skew(India_data['Population, total'])
-print("Skewness of India Population", India_skewness )
+print("Skewness of India Population", India_skewness)
 
-
+# Kurtosis
 India_kurtosis = kurtosis(India_data['Population, total'])
-print("Kurtosis of India Population", India_kurtosis )
+print("Kurtosis of India Population", India_kurtosis)
 
 getdata("Life Expectancy.csv")
 
 
 def population_Bargraph_1(Life_Expectancy):
+    """
+    Generate a grouped bar chart showing the total population of specified countries over specific years.
+
+    Args:
+    - Life_Expectancy: str, path to the CSV file containing life expectancy data
+    """
     # Read the data from the CSV file
     population_data = pd.read_csv(Life_Expectancy)
 
@@ -77,6 +92,12 @@ population_Bargraph_1('df_cleaned.csv')
 # Death Rate
 
 def population_Bargraph_2(Life_Expectancy):
+    """
+    Generate a grouped bar chart showing the death rate of specified countries over specific years.
+
+    Args:
+    - Life_Expectancy: str, path to the CSV file containing life expectancy data
+    """
     # Read the data from the CSV file
     population_data = pd.read_csv(Life_Expectancy)
 
@@ -112,6 +133,12 @@ population_Bargraph_2('df_cleaned.csv')
 # Life Expectancy
 
 def life_expectancy_line(Life_Expectancy):
+    """
+    Generate a line plot showing the life expectancy trend of specified countries over specific years.
+
+    Args:
+    - Life_Expectancy: str, path to the CSV file containing life expectancy data
+    """
     # Load the dataset from the CSV file
     Life_exp_data = pd.read_csv(Life_Expectancy)
 
@@ -147,8 +174,13 @@ life_expectancy_line('df_cleaned.csv')
 
 # Neonatal Mortality Rate
 
-
 def Neonatal_line(Neonatal):
+    """
+    Generate a line plot showing the neonatal mortality rate trend of specified countries over specific years.
+
+    Args:
+    - Neonatal: str, path to the CSV file containing neonatal mortality rate data
+    """
     # Load the dataset from the CSV file
     Neonatal_data = pd.read_csv(Neonatal)
 
@@ -182,7 +214,15 @@ def Neonatal_line(Neonatal):
 Neonatal_line('df_cleaned.csv')
 
 # Heatmap for India
+
+
 def India_HeatMap(Population):
+    """
+   Generate a heatmap showing the correlation between different indicators for India.
+
+   Args:
+   - Population: str, path to the CSV file containing population data
+   """
     data = pd.read_csv(Population)
     India_data = data[data['Country Name'] == 'India']
 
@@ -213,12 +253,19 @@ def India_HeatMap(Population):
     plt.tight_layout()  # Adjust layout for better visualization
     plt.show()
 
+
 # Call the function and pass the CSV file path as an argument
 India_HeatMap('df_cleaned.csv')
 
 
 # Heatmap for Mexico
 def Mexico_HeatMap(Population):
+    """
+    Generate a heatmap showing the correlation between different indicators for Mexico.
+
+    Args:
+    - Population: str, path to the CSV file containing population data
+    """
     data = pd.read_csv(Population)
     Mexico_data = data[data['Country Name'] == 'Mexico']
 
@@ -248,6 +295,7 @@ def Mexico_HeatMap(Population):
     plt.title('Correlation Heatmap of Mexico')
     plt.tight_layout()  # Adjust layout for better visualization
     plt.show()
+
 
 # Call the function and pass the CSV file path as an argument
 Mexico_HeatMap('df_cleaned.csv')
