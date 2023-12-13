@@ -10,7 +10,7 @@ def getdata(Population):
     return df_life
 
 
-# Reading the data into df
+# Reading the data into dataframe
 df_melt = getdata('Life Expectancy.csv').melt(id_vars=[
     'Country Name', 'Country Code', 'Indicator Name', 'Indicator Code'], var_name='Year', value_name='Value')
 
